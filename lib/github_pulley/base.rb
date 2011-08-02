@@ -1,4 +1,4 @@
-module Pulley
+module GithubPulley
   class Base
     def initialize
       @octokit = Octokit::Client.new(:login => github_user, :token => github_token)

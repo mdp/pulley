@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.add_runtime_dependency 'json'
   s.add_runtime_dependency 'octokit', "= 0.6.4"
+  s.add_runtime_dependency 'optitron'
 end

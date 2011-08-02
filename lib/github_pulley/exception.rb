@@ -1,3 +1,3 @@
-module Pulley
+module GithubPulley
   class Error < StandardError; end
 end

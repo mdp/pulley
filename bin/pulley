@@ -18,7 +18,7 @@ class Runner < Optitron::CLI
   arg_types :string
   opt 'body', :type => :string
   def create(title)
-    pulley.create_pull_request(title, body)
+    pulley.create_pull_request(title, params['body'])
   end
 
   desc "Get a list of my open issues"

@@ -22,13 +22,13 @@ module GithubPulley
       pull_to = forked_from || origin_repo
       # @octokit.create_pull_request_for_issue(repo, base, head, issue, options={})
       # Returns nil if successfull
-      @octokit.create_pull_request_for_issue(pull_to, opts[:base], opts[:head], issue)['issues']
+      @octokit.create_pull_request_for_issue(pull_to, opts[:base], opts[:head], issue)
 
       issue_details = @octokit.issue(repo, issue)
       print_issue(issue_details, "Attached to")
     end
 
-    def create_new_pull_request(title, body=nil, opts={})
+    def create_pull_request(title, body='', opts={})
       opts = {
         :base => 'master',
         :head => "#{upstream_user||origin_user}:#{current_branch}",
@@ -37,7 +37,7 @@ module GithubPulley
       puts "Pushing to #{opts[:branch]} on 'origin'"
       `git push origin #{opts[:branch]}`
       pull_to = forked_from || origin_repo
-      @octokit.create_pull_request(repo, base, head)
+      @octokit.create_pull_request(pull_to, opts[:base], opts[:head], title, body)
       # Returns nil if successfull
       puts "Created new pull request"
     end

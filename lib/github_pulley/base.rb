@@ -14,9 +14,10 @@ module GithubPulley
     def attach_pull_request_to_issue(issue, opts={})
       opts = {
         :base => 'master',
-        :head => "#{upstream_user||origin_user}:#{current_branch}",
+        :head => "#{origin_user}:#{current_branch}",
         :branch => current_branch
       }.merge(opts)
+      p opts
       puts "Pushing to #{opts[:branch]} on 'origin'"
       `git push origin #{opts[:branch]}`
       pull_to = forked_from || origin_repo
@@ -31,7 +32,7 @@ module GithubPulley
     def create_pull_request(title, body='', opts={})
       opts = {
         :base => 'master',
-        :head => "#{upstream_user||origin_user}:#{current_branch}",
+        :head => "#{origin_user}:#{current_branch}",
         :branch => current_branch
       }.merge(opts)
       puts "Pushing to #{opts[:branch]} on 'origin'"

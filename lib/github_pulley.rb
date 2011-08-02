@@ -1,14 +1,14 @@
 require "optitron"
 require "octokit"
-require "pulley/base"
-require "pulley/version"
-require "pulley/exception"
+require "github_pulley/base"
+require "github_pulley/version"
+require "github_pulley/exception"
 
-module Pulley
+module GithubPulley
   class << self
-    # Alias for Pulley::Base.new
+    # Alias for GithubPulley::Base.new
     def new
-      Pulley::Base.new
+      GithubPulley::Base.new
     end
 
     def method_missing(method, *args, &block)

@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
-require 'pulley'
+require 'github_pulley'
 
 class Runner < Optitron::CLI
 
   def pulley
-    @pulley ||= Pulley.new
+    @pulley ||= GithubPulley.new
   end
 
   desc "Attach a branch to an issue with a pull request"
@@ -30,7 +30,7 @@ end
 
 begin
   Runner.dispatch
-rescue Pulley::Error => e
+rescue GithubPulley::Error => e
   puts e.message
 rescue Octokit::Error => e
   puts e.message

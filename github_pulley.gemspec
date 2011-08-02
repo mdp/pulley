@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "pulley/version"
+require "github_pulley/version"
 
 Gem::Specification.new do |s|
-  s.name        = "pulley"
-  s.version     = Pulley::VERSION
+  s.name        = "github_pulley"
+  s.version     = GithubPulley::VERSION
   s.authors     = ["Mark Percival"]
   s.email       = ["m@mdp.im"]
   s.homepage    = "https://github.com/mdp/pulley"

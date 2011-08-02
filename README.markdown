@@ -1,5 +1,5 @@
-# Eschews
-### A ruby gem for working with github issues
+# GithubPulley
+### A ruby gem for creating github pull requests
 
 This gem serves no other purpose but to allow github users
 to quickly attach a branch to an issue via a pull request.
@@ -12,7 +12,7 @@ we want to eschew using Pivotal Tracker until we're big enough to care.
 
 ### Install
 
-    gem install eschews
+    gem install github-pulley
 
 ### Use
 
@@ -20,7 +20,7 @@ we want to eschew using Pivotal Tracker until we're big enough to care.
     git co -b some_new_feature
     # Add the feature
     git ci -am "Added the ability to send emails"
-    eschews attach 4  # push and attach this branch to issue #4
+    pulley attach 4  # push and attach this branch to issue #4
 
 Later someone can review the pull request, and merge the code(which also closes
 the issue)

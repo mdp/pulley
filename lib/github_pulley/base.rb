@@ -1,13 +1,13 @@
 module GithubPulley
   class Base
     def initialize
-      @octokit = Octokit::Client.new(:login => github_user, :token => github_token)
+      @octokit = Octokit::Client.new(:login => github_user, :oauth_token => github_token)
     end
 
     def get_open_issues(opts={})
       # Listing by assignee seems to be broken
       all_open_issues.each do |issue|
-        print_issue(issue)
+        print_issue(issue, "")
       end
     end
 
@@ -46,7 +46,8 @@ module GithubPulley
     private
 
     def all_open_issues
-      @octokit.get("/api/v2/json/issues/list/#{Octokit::Repository.new(repo)}/open")['issues']
+      #@octokit.get("/api/v2/json/issues/list/#{Octokit::Repository.new(repo)}/open")['issues']
+      @octokit.list_issues(repo, :state => "open")
     end
 
     def github_user
@@ -57,7 +58,7 @@ module GithubPulley
 
     def github_token
       @github_token ||= `git config github.token`.strip
-      raise Error, "Please set github.token" if @github_token.empty?
+      raise Error, "Please set github.token \nExample: curl -ku #{github_user} -d '{\"scopes\":[\"repo\"],\"note\":\"pulley\"}' -X POST 'https://api.github.com/authorizations'" if @github_token.empty?
       @github_token
     end
 

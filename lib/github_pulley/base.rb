@@ -57,7 +57,7 @@ module GithubPulley
 
     def github_token
       @github_token ||= `git config github.token`.strip
-      raise Error, "Please set github.token" if @github_token.empty?
+      raise Error, "Please set github.token \nExample: curl -ku #{github_user} -d '{\"scopes\":[\"repo\"],\"note\":\"pulley\"}' -X POST 'https://api.github.com/authorizations'" if @github_token.empty?
       @github_token
     end
 
